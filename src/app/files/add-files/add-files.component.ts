@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from '../../shared.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { SharedService } from '../../shared.service';
   styleUrls: ['./add-files.component.css'],
 })
 export class AddFilesComponent implements OnInit {
-  shortLink: string = '';
+  @Input() UserFiles: any;
   loading: boolean = false; // Flag variable
   file: any = null; // Variable to store file
 
@@ -17,13 +17,11 @@ export class AddFilesComponent implements OnInit {
 
   onUpload() {
     this.loading = !this.loading;
-    console.log(this.file);
     this.service.uploadFile(this.file).subscribe((event: any) => {
       if (typeof event === 'object') {
-        // Short link via api response
-        this.shortLink = event.link;
-
-        this.loading = false; // Flag variable
+        this.UserFiles.push(event);
+        this.loading = false;
+        this.file = null;
       }
     });
   }
