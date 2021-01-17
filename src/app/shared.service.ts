@@ -15,8 +15,17 @@ export class SharedService {
     return this.Http.get<any>(`${this.APIUrl}`);
   }
 
-  addFile(val: any) {
+  sendMail(val: any) {
     return this.Http.post(`${this.APIUrl}/sendMail`, val);
+  }
+
+  uploadFile(file: any) {
+    // Create form data 
+    const formData = new FormData();  
+        
+    // Store form name as "file" with file data 
+    formData.append("file", file, file.name); 
+    return this.Http.post(`${this.APIUrl}`, formData);
   }
 
   deleteFile(val: any) {

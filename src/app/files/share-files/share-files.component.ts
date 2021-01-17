@@ -78,7 +78,7 @@ export class ShareFilesComponent implements OnInit {
       bcc: this.bcc,
       emailContent: this.emailContent,
     };
-    this.service.addFile(data).subscribe((result) => {
+    this.service.sendMail(data).subscribe((result) => {
       this.clearData();
     });
   }
