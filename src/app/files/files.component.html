@@ -1,1 +1,40 @@
-<p>files works!</p>
+<div class="container">
+    <div>
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       <a class="navbar-brand" href="#">File Directory</a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+     
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+           <app-add-files></app-add-files>
+         </ul>
+         <form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+           <app-share-files [UserFiles]="UserFiles"></app-share-files>
+         </form>
+       </div>
+     </nav>
+    </div>
+    <div>
+     <table class="table">
+       <thead class="thead-dark">
+         <tr>
+           <th scope="col">#</th>
+           <th scope="col">Filename</th>
+           <th scope="col">Created On</th>
+           <th scope="col">Action</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let file of UserFiles">
+           <th scope="row">{{file.id}}</th>
+           <td>{{file.filename}}</td>
+           <td>{{file.createdAt}}</td>
+           <td>@mdo</td>
+         </tr>
+       </tbody>
+     </table>
+    </div>
+ </div>
